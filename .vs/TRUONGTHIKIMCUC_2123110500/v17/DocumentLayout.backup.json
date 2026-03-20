@@ -1,0 +1,407 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\models\\inventoryticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\models\\inventoryticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\controllers\\stockcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\controllers\\stockcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\controllers\\inventoryticketscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\controllers\\inventoryticketscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\controllers\\supplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\controllers\\supplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\controllers\\warehousescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\controllers\\warehousescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\models\\ticketdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\models\\ticketdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\models\\stockcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\models\\stockcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\models\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\models\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\electronicinventorymanagementsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\electronicinventorymanagementsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\migrations\\20260320024723_addwarehouseandstockcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\migrations\\20260320024723_addwarehouseandstockcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\migrations\\20260320023132_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\migrations\\20260320023132_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|d:\\asp.net\\truongthikimcuc_2123110500\\electronic inventory management system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8474F518-55C6-4FF5-AFD5-455AB829DB71}|Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj|solutionrelative:electronic inventory management system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StockCardsController.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\StockCardsController.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Controllers\\StockCardsController.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\StockCardsController.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Controllers\\StockCardsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T03:41:24.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CustomersController.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\CustomersController.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Controllers\\CustomersController.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\CustomersController.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Controllers\\CustomersController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAuwCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T03:39:51.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAuwCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T03:39:27.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InventoryTicket.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\InventoryTicket.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Models\\InventoryTicket.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\InventoryTicket.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Models\\InventoryTicket.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA0wBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:17:41.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InventoryTicketsController.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\InventoryTicketsController.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Controllers\\InventoryTicketsController.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\InventoryTicketsController.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Controllers\\InventoryTicketsController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAuwCAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T03:36:42.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SuppliersController.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\SuppliersController.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Controllers\\SuppliersController.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\SuppliersController.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Controllers\\SuppliersController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA+wBwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T03:36:16.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Warehouse.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Warehouse.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Models\\Warehouse.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Warehouse.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Models\\Warehouse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:43:14.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "WarehousesController.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\WarehousesController.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Controllers\\WarehousesController.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\WarehousesController.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Controllers\\WarehousesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T03:35:45.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAmwEIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T03:34:28.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Controllers\\CategoriesController.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T03:31:08.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Models\\Product.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Product.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:15:54.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Models\\Category.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Category.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:35:18.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "StockCard.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\StockCard.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Models\\StockCard.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\StockCard.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Models\\StockCard.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAIAwwAwAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:44:03.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Supplier.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Supplier.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Models\\Supplier.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Supplier.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Models\\Supplier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:34:54.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Data\\AppDbContext.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:23:05.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TicketDetail.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\TicketDetail.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Models\\TicketDetail.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\TicketDetail.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Models\\TicketDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:18:15.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Customer.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Models\\Customer.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\Customer.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Models\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAUwA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:36:57.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ElectronicInventoryManagementSystem.csproj",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj",
+              "RelativeToolTip": "Electronic Inventory Management System\\ElectronicInventoryManagementSystem.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-20T02:13:37.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\appsettings.json",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\appsettings.json",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\appsettings.json",
+              "RelativeToolTip": "Electronic Inventory Management System\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-20T02:18:33.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Models\\User.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Models\\User.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:37:33.702Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20260320024723_AddWarehouseAndStockCard.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Migrations\\20260320024723_AddWarehouseAndStockCard.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Migrations\\20260320024723_AddWarehouseAndStockCard.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Migrations\\20260320024723_AddWarehouseAndStockCard.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Migrations\\20260320024723_AddWarehouseAndStockCard.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:47:23.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20260320023132_InitialCreate.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Migrations\\20260320023132_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Migrations\\20260320023132_InitialCreate.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Migrations\\20260320023132_InitialCreate.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Migrations\\20260320023132_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:31:32.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Program.cs",
+              "RelativeDocumentMoniker": "Electronic Inventory Management System\\Program.cs",
+              "ToolTip": "D:\\ASP.NET\\TRUONGTHIKIMCUC_2123110500\\Electronic Inventory Management System\\Program.cs",
+              "RelativeToolTip": "Electronic Inventory Management System\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T02:20:12.246Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
