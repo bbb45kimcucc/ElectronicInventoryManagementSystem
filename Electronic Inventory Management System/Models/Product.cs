@@ -19,7 +19,8 @@ public class Product
 
     public string Unit { get; set; } = "Cái"; 
 
-    public int CurrentStock { get; set; } = 0; 
+    public int CurrentStock { get; set; } = 0;
+    public int Quantity { get; set; }
 
     public double AveragePrice { get; set; } = 0;
 
