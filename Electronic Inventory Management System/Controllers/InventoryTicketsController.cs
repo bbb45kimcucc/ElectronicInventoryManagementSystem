@@ -12,7 +12,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
         private readonly AppDbContext _context;
         public InventoryTicketsController(AppDbContext context) { _context = context; }
 
-        // 1. Lấy danh sách phiếu (Kèm chi tiết, người tạo, khách/nhà cung cấp)
+        // 1. Lấy danh sách phiếu 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<InventoryTicket>>> GetTickets()
         {

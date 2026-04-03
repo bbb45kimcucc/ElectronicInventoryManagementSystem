@@ -13,7 +13,10 @@ public class User
     public string Password { get; set; } = string.Empty; 
 
     public string FullName { get; set; } = string.Empty;
+
+
+    [Required] 
     public string Email { get; set; }
 
-    public string Role { get; set; } = "Staff"; // Quyền: Admin hoặc Staff (Nhân viên)
+    public string Role { get; set; } = "Staff"; 
 }
