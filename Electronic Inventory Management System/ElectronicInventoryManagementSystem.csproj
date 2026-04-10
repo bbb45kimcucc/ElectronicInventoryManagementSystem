@@ -6,11 +6,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Electronic_Inventory_Management_System</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="Dockerfile" />
-  </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.13">
       <PrivateAssets>all</PrivateAssets>
