@@ -23,6 +23,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
             return await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.Warehouse)
+                .Include(p => p.Manufacturer)
                 .ToListAsync();
         }
 

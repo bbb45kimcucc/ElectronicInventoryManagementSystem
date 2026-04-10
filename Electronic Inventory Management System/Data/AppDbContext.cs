@@ -19,6 +19,9 @@ namespace ElectronicInventoryManagementSystem.Data
         public DbSet<TicketDetail> TicketDetails { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<StockCard> StockCards { get; set; }
+        public DbSet<Manufacturer> Manufacturers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

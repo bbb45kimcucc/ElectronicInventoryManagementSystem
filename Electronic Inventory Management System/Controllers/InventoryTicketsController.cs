@@ -43,6 +43,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
         }
 
         // 3. THÊM PHIẾU VÀ TỰ ĐỘNG CẬP NHẬT TỒN KHO (NGHIỆP VỤ LÕI)
+        // 3. THÊM PHIẾU VÀ TỰ ĐỘNG CẬP NHẬT TỒN KHO + GHI THẺ KHO
         [HttpPost]
         public async Task<ActionResult<InventoryTicket>> PostTicket(InventoryTicket ticket)
         {
@@ -51,37 +52,65 @@ namespace ElectronicInventoryManagementSystem.Controllers
                 return BadRequest(new { message = "Phiếu phải có ít nhất 1 sản phẩm bên trong." });
             }
 
-            // Lặp qua từng chi tiết hàng hóa trong phiếu để xử lý kho
+            // 1. Lưu Phiếu Kho trước để nó lấy ID (Cần ID để làm Khóa chính)
+            ticket.CreatedAt = DateTime.Now;
+            _context.InventoryTickets.Add(ticket);
+
+            // Phải SaveChanges 1 lần ở đây để ticket có cái ID thật trong Database
+            await _context.SaveChangesAsync();
+
+            // 2. Lặp qua từng chi tiết hàng hóa để xử lý tồn kho và Thẻ kho
             foreach (var detail in ticket.TicketDetails)
             {
                 var product = await _context.Products.FindAsync(detail.ProductId);
                 if (product == null)
                     return BadRequest(new { message = $"Sản phẩm có ID {detail.ProductId} không tồn tại." });
 
-                // Xử lý logic Nhập / Xuất (Giả sử Type là "Nhập" hoặc "Xuất")
+                // Lấy số lượng Tồn đầu kỳ (Trước khi thay đổi)
+                int beforeQty = product.Quantity;
+                int changeQty = detail.Quantity;
+
+                // Xử lý logic Nhập / Xuất 
                 if (ticket.Type.ToLower() == "nhập")
                 {
-                    product.Quantity += detail.Quantity; // Nhập thì cộng kho
+                    product.Quantity += changeQty; // Nhập thì cộng kho
                 }
                 else if (ticket.Type.ToLower() == "xuất")
                 {
-                    if (product.Quantity < detail.Quantity)
+                    if (product.Quantity < changeQty)
                     {
-                        // Chặn xuất âm kho
-                        return BadRequest(new { message = $"Sản phẩm '{product.Name}' không đủ số lượng để xuất. Tồn kho hiện tại: {product.Quantity}" });
+                        // Chặn xuất âm kho, đồng thời phải xóa cái Phiếu vừa tạo hụt ở trên
+                        _context.InventoryTickets.Remove(ticket);
+                        await _context.SaveChangesAsync();
+                        return BadRequest(new { message = $"Sản phẩm '{product.Name}' không đủ số lượng để xuất. Tồn: {product.Quantity}" });
                     }
-                    product.Quantity -= detail.Quantity; // Xuất thì trừ kho
+                    product.Quantity -= changeQty; // Xuất thì trừ kho
+                    changeQty = -changeQty; // Đổi dấu thành số âm để ghi vào Thẻ kho cho chuẩn
                 }
+
+                // ==========================================
+                // MA THUẬT TỰ ĐỘNG: Tạo ngay 1 Thẻ Kho (StockCard)
+                // ==========================================
+                var stockCard = new StockCard
+                {
+                    ProductId = product.Id,
+                    TransactionDate = DateTime.Now,
+                    ReferenceCode = ticket.TicketCode, // Móc mã phiếu vào Thẻ kho
+                    BeforeQty = beforeQty,             // Tồn đầu
+                    ChangeQty = changeQty,             // Thay đổi (+ hoặc -)
+                    AfterQty = product.Quantity,       // Tồn cuối
+                    Note = $"Lập phiếu {ticket.Type.ToLower()} tự động"
+                };
+                _context.StockCards.Add(stockCard);
             }
 
-            // EF Core sẽ tự động dùng Transaction. Lưu Phiếu, Lưu Chi Tiết, Lưu Tồn Kho cùng 1 lúc!
-            _context.InventoryTickets.Add(ticket);
+            // Lưu một lần cuối cùng (Gồm Tồn kho mới + Danh sách Thẻ kho)
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetTicket), new { id = ticket.Id }, ticket);
         }
 
-        // 4. XÓA PHIẾU VÀ HOÀN LẠI TỒN KHO
+        // 4. XÓA PHIẾU VÀ HOÀN LẠI TỒN KHO + GHI THẺ KHO HOÀN TÁC
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTicket(int id)
         {
@@ -97,17 +126,38 @@ namespace ElectronicInventoryManagementSystem.Controllers
                 var product = await _context.Products.FindAsync(detail.ProductId);
                 if (product != null)
                 {
+                    int beforeQty = product.Quantity;
+                    int changeQty = detail.Quantity;
+
                     if (ticket.Type.ToLower() == "nhập")
-                        product.Quantity -= detail.Quantity; // Xóa phiếu nhập -> Trừ kho lại
+                    {
+                        product.Quantity -= changeQty; // Xóa phiếu Nhập -> Bị trừ kho
+                        changeQty = -changeQty; // Ghi số âm
+                    }
                     else if (ticket.Type.ToLower() == "xuất")
-                        product.Quantity += detail.Quantity; // Xóa phiếu xuất -> Cộng kho lại
+                    {
+                        product.Quantity += changeQty; // Xóa phiếu Xuất -> Được cộng kho lại
+                    }
+
+                    // Ghi nhận lịch sử hoàn tác vào Thẻ kho
+                    var stockCard = new StockCard
+                    {
+                        ProductId = product.Id,
+                        TransactionDate = DateTime.Now,
+                        ReferenceCode = "HỦY-" + ticket.TicketCode,
+                        BeforeQty = beforeQty,
+                        ChangeQty = changeQty,
+                        AfterQty = product.Quantity,
+                        Note = $"Hủy phiếu {ticket.Type.ToLower()} - Hoàn lại kho"
+                    };
+                    _context.StockCards.Add(stockCard);
                 }
             }
 
             _context.InventoryTickets.Remove(ticket);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "Đã xóa phiếu và cập nhật lại số lượng tồn kho." });
+            return Ok(new { message = "Đã xóa phiếu, hoàn tồn kho và ghi nhật ký thành công." });
         }
     }
 }

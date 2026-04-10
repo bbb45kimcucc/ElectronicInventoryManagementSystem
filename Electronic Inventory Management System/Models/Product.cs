@@ -32,4 +32,8 @@ public class Product
 
     [ForeignKey("WarehouseId")]
     public virtual Warehouse? Warehouse { get; set; }
+    public int? ManufacturerId { get; set; }
+
+    [ForeignKey("ManufacturerId")]
+    public virtual Manufacturer? Manufacturer { get; set; }
 }

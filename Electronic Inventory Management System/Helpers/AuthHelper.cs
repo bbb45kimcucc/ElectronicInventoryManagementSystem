@@ -2,11 +2,10 @@
 {
     public static class AuthHelper
     {
-        public static string CurrentRole = "Staff";
-
-        public static bool IsAdmin()
+        public static bool IsAdmin(HttpRequest request)
         {
-            return CurrentRole == "Admin";
+            var role = request.Headers["User-Role"].ToString();
+            return role == "Admin";
         }
     }
 }
