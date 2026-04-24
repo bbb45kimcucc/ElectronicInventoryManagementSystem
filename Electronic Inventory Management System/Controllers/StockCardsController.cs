@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using ClosedXML.Excel;
 using ElectronicInventoryManagementSystem.Data;
 using ElectronicInventoryManagementSystem.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ElectronicInventoryManagementSystem.Controllers
 {
@@ -34,8 +35,6 @@ namespace ElectronicInventoryManagementSystem.Controllers
             });
         }
 
-        // 2. Tra cứu lịch sử thẻ kho của 1 Sản phẩm (Có lọc theo Ngày tháng)
-        // Gọi mẫu: api/StockCards/product/1?startDate=2024-01-01&endDate=2024-01-31
         [HttpGet("product/{productId}")]
         public async Task<ActionResult<IEnumerable<StockCard>>> GetByProduct(
             int productId,
@@ -73,6 +72,62 @@ namespace ElectronicInventoryManagementSystem.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Đã ghi nhận lịch sử vào Thẻ kho thành công!", data = stockCard });
+        }
+
+        [HttpGet("export-excel")]
+        public async Task<IActionResult> ExportExcel()
+        {
+            var cards = await _context.StockCards
+                .Include(s => s.Product) // Kéo theo tên Sản phẩm cho dễ đọc
+                .OrderByDescending(s => s.TransactionDate)
+                .ToListAsync();
+
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("TheKho");
+                var currentRow = 1;
+
+                // Cập nhật lại Tiêu đề cho đúng với Model siêu xịn của Cúc
+                worksheet.Cell(currentRow, 1).Value = "Mã Thẻ";
+                worksheet.Cell(currentRow, 2).Value = "Tên Sản Phẩm";
+                worksheet.Cell(currentRow, 3).Value = "Ngày Giao Dịch";
+                worksheet.Cell(currentRow, 4).Value = "Mã Phiếu Gốc"; // ReferenceCode
+                worksheet.Cell(currentRow, 5).Value = "Tồn Đầu";      // BeforeQty
+                worksheet.Cell(currentRow, 6).Value = "SL Thay Đổi";   // ChangeQty
+                worksheet.Cell(currentRow, 7).Value = "Tồn Cuối";      // AfterQty
+                worksheet.Cell(currentRow, 8).Value = "Ghi Chú";       // Note
+
+                var header = worksheet.Range(1, 1, 1, 8);
+                header.Style.Font.Bold = true;
+                header.Style.Fill.BackgroundColor = XLColor.LightGray;
+
+                foreach (var card in cards)
+                {
+                    currentRow++;
+                    worksheet.Cell(currentRow, 1).Value = card.Id;
+                    worksheet.Cell(currentRow, 2).Value = card.Product?.Name ?? "N/A";
+                    worksheet.Cell(currentRow, 3).Value = card.TransactionDate.ToString("dd/MM/yyyy HH:mm");
+
+                    // Map đúng tên các cột trong file StockCard.cs của Cúc
+                    worksheet.Cell(currentRow, 4).Value = card.ReferenceCode;
+                    worksheet.Cell(currentRow, 5).Value = card.BeforeQty;
+
+                    // Xử lý logic hiển thị (+/-) cho SL Thay Đổi dựa vào Before/After
+                    string changeType = card.AfterQty >= card.BeforeQty ? $"+{card.ChangeQty}" : $"-{card.ChangeQty}";
+                    worksheet.Cell(currentRow, 6).Value = changeType;
+
+                    worksheet.Cell(currentRow, 7).Value = card.AfterQty;
+                    worksheet.Cell(currentRow, 8).Value = card.Note;
+                }
+
+                worksheet.Columns().AdjustToContents();
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", $"TheKho_{DateTime.Now:ddMMyyyy}.xlsx");
+                }
+            }
         }
     }
 }

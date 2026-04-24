@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using ClosedXML.Excel;
 using ElectronicInventoryManagementSystem.Data;
+using ElectronicInventoryManagementSystem.Helpers;
 using ElectronicInventoryManagementSystem.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ElectronicInventoryManagementSystem.Controllers
 {
@@ -14,6 +16,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
 
         // 1. Lấy danh sách Nhà cung cấp
         [HttpGet]
+
         public async Task<ActionResult<IEnumerable<Supplier>>> GetSuppliers()
         {
             return await _context.Suppliers.ToListAsync();
@@ -56,6 +59,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
         }
 
         // 5. Thêm Nhà cung cấp mới
+        [AdminOnly]
         [HttpPost]
         public async Task<ActionResult<Supplier>> PostSupplier(Supplier supplier)
         {
@@ -65,6 +69,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
         }
 
         // 6. Sửa thông tin Nhà cung cấp
+        [AdminOnly]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSupplier(int id, Supplier supplier)
         {
@@ -84,8 +89,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
 
             return NoContent();
         }
-
-        // 7. NGHIỆP VỤ XÓA AN TOÀN (Bảo vệ dữ liệu)
+        [AdminOnly]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSupplier(int id)
         {
@@ -103,6 +107,44 @@ namespace ElectronicInventoryManagementSystem.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Đã xóa nhà cung cấp thành công." });
+        }
+        [HttpGet("export-excel")]
+        public async Task<IActionResult> ExportExcel()
+        {
+            var suppliers = await _context.Suppliers.ToListAsync();
+
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("DS_NhaCungCap");
+                var currentRow = 1;
+
+                worksheet.Cell(currentRow, 1).Value = "Mã NCC";
+                worksheet.Cell(currentRow, 2).Value = "Tên Nhà Cung Cấp";
+                worksheet.Cell(currentRow, 3).Value = "Số Điện Thoại";
+                worksheet.Cell(currentRow, 4).Value = "Email";
+                worksheet.Cell(currentRow, 5).Value = "Địa Chỉ";
+
+                worksheet.Range(1, 1, 1, 5).Style.Font.Bold = true;
+                worksheet.Range(1, 1, 1, 5).Style.Fill.BackgroundColor = XLColor.LightGray;
+
+                foreach (var sup in suppliers)
+                {
+                    currentRow++;
+                    worksheet.Cell(currentRow, 1).Value = sup.Id;
+                    worksheet.Cell(currentRow, 2).Value = sup.Name;
+                    worksheet.Cell(currentRow, 3).Value = sup.Phone;
+                    worksheet.Cell(currentRow, 4).Value = sup.Email;
+                    worksheet.Cell(currentRow, 5).Value = sup.Address;
+                }
+
+                worksheet.Columns().AdjustToContents();
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", $"NhaCungCap_{DateTime.Now:ddMMyyyy}.xlsx");
+                }
+            }
         }
     }
 }

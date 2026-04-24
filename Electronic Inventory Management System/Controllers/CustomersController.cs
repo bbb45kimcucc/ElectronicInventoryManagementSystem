@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using ClosedXML.Excel;
 using ElectronicInventoryManagementSystem.Data;
+using ElectronicInventoryManagementSystem.Helpers;
 using ElectronicInventoryManagementSystem.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ElectronicInventoryManagementSystem.Controllers
 {
@@ -19,13 +21,16 @@ namespace ElectronicInventoryManagementSystem.Controllers
             return await _context.Customers.ToListAsync();
         }
 
-        // 2. Tìm kiếm khách hàng theo Tên hoặc Số điện thoại (Nghiệp vụ cốt lõi)
+        // 2. TÌM KIẾM: Đã thêm tìm theo Phương thức thanh toán
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<Customer>>> Search([FromQuery] string query)
         {
             if (string.IsNullOrEmpty(query)) return await GetCustomers();
+
             return await _context.Customers
-                .Where(c => c.Name.Contains(query) || c.Phone.Contains(query))
+                .Where(c => c.Name.Contains(query)
+                         || c.Phone.Contains(query)
+                         || (c.PaymentMethod != null && c.PaymentMethod.Contains(query))) // Thêm dòng này
                 .ToListAsync();
         }
 
@@ -37,7 +42,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
             return customer == null ? NotFound(new { message = "Không tìm thấy khách hàng này." }) : customer;
         }
 
-        // 4. Xem lịch sử các Phiếu Xuất của khách hàng này
+        // 4. Xem lịch sử phiếu xuất (Giữ nguyên logic xịn của Cúc)
         [HttpGet("{id}/tickets")]
         public async Task<ActionResult<IEnumerable<InventoryTicket>>> GetCustomerTickets(int id)
         {
@@ -53,17 +58,24 @@ namespace ElectronicInventoryManagementSystem.Controllers
             return Ok(tickets);
         }
 
-        // 5. Thêm khách hàng mới
+        // 5. THÊM MỚI: Xử lý giá trị mặc định cho PaymentMethod
         [HttpPost]
         public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
+            // Nếu Frontend không gửi lên, mặc định là Tiền mặt
+            if (string.IsNullOrEmpty(customer.PaymentMethod))
+            {
+                customer.PaymentMethod = "Tiền mặt";
+            }
+
             _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetCustomer), new { id = customer.Id }, customer);
         }
 
-        // 6. Cập nhật thông tin khách hàng (Sửa SĐT, Địa chỉ...)
+        // 6. CẬP NHẬT
         [HttpPut("{id}")]
+ 
         public async Task<IActionResult> PutCustomer(int id, Customer customer)
         {
             if (id != customer.Id) return BadRequest(new { message = "ID không khớp." });
@@ -83,7 +95,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
             return NoContent();
         }
 
-        // 7. Xóa an toàn (Nghiệp vụ ràng buộc)
+        // 7. XÓA (Giữ nguyên ràng buộc lịch sử giao dịch)
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
@@ -93,13 +105,49 @@ namespace ElectronicInventoryManagementSystem.Controllers
             var hasTickets = await _context.InventoryTickets.AnyAsync(t => t.CustomerId == id);
             if (hasTickets)
             {
-                return BadRequest(new { message = "Cấm xóa! Khách hàng này đã có lịch sử giao dịch. Chỉ có thể sửa thông tin." });
+                return BadRequest(new { message = "Cấm xóa! Khách hàng này đã có lịch sử giao dịch." });
             }
 
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Đã xóa khách hàng thành công." });
+        }
+        [HttpGet("export-excel")]
+        public async Task<IActionResult> ExportExcel()
+        {
+            var customers = await _context.Customers.ToListAsync();
+
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("DS_KhachHang");
+                var currentRow = 1;
+
+                worksheet.Cell(currentRow, 1).Value = "Mã KH";
+                worksheet.Cell(currentRow, 2).Value = "Tên Khách Hàng";
+                worksheet.Cell(currentRow, 3).Value = "Số Điện Thoại";
+                worksheet.Cell(currentRow, 4).Value = "Thanh Toán Ưu Tiên";
+
+                worksheet.Range(1, 1, 1, 4).Style.Font.Bold = true;
+                worksheet.Range(1, 1, 1, 4).Style.Fill.BackgroundColor = XLColor.LightGray;
+
+                foreach (var cus in customers)
+                {
+                    currentRow++;
+                    worksheet.Cell(currentRow, 1).Value = cus.Id;
+                    worksheet.Cell(currentRow, 2).Value = cus.Name;
+                    worksheet.Cell(currentRow, 3).Value = cus.Phone;
+                    worksheet.Cell(currentRow, 4).Value = cus.PaymentMethod;
+                }
+
+                worksheet.Columns().AdjustToContents();
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", $"KhachHang_{DateTime.Now:ddMMyyyy}.xlsx");
+                }
+            }
         }
     }
 }

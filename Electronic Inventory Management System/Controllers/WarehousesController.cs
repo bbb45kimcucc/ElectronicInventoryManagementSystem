@@ -1,33 +1,44 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ElectronicInventoryManagementSystem.Data;
+﻿using ElectronicInventoryManagementSystem.Data;
+using ElectronicInventoryManagementSystem.Helpers; // Dùng AdminOnly
 using ElectronicInventoryManagementSystem.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization; // 👈 THÊM DÒNG NÀY ĐỂ HẾT BÁO ĐỎ CHỖ [Authorize]
 
 namespace ElectronicInventoryManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize] // Bắt buộc phải đăng nhập mới được vào
     public class WarehousesController : ControllerBase
     {
         private readonly AppDbContext _context;
         public WarehousesController(AppDbContext context) { _context = context; }
 
-        // 1. Lấy danh sách tất cả các kho
+        // ==========================================
+        // QUYỀN CHUNG: AI CŨNG ĐƯỢC XEM (STAFF & ADMIN)
+        // ==========================================
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Warehouse>>> GetWarehouses()
         {
             return await _context.Warehouses.ToListAsync();
         }
 
-        // 2. Lấy chi tiết 1 kho
         [HttpGet("{id}")]
         public async Task<ActionResult<Warehouse>> GetWarehouse(int id)
         {
             var warehouse = await _context.Warehouses.FindAsync(id);
-            return warehouse == null ? NotFound(new { message = "Không tìm thấy kho hàng." }) : warehouse;
+            if (warehouse == null) return NotFound(new { message = "Không tìm thấy kho hàng." });
+            return warehouse;
         }
 
+        // ==========================================
+        // QUYỀN RIÊNG: CHỈ ADMIN MỚI ĐƯỢC THÊM, SỬA, XÓA
+        // ==========================================
+
         // 3. Thêm kho mới
+        [AdminOnly] // 👈 Gắn khóa vô nè
         [HttpPost]
         public async Task<ActionResult<Warehouse>> PostWarehouse(Warehouse warehouse)
         {
@@ -36,7 +47,8 @@ namespace ElectronicInventoryManagementSystem.Controllers
             return CreatedAtAction(nameof(GetWarehouse), new { id = warehouse.Id }, warehouse);
         }
 
-        // 4. Sửa thông tin kho (Đổi tên, địa chỉ...)
+        // 4. Sửa thông tin kho
+        [AdminOnly] // 👈 Gắn khóa vô nè
         [HttpPut("{id}")]
         public async Task<IActionResult> PutWarehouse(int id, Warehouse warehouse)
         {
@@ -50,25 +62,29 @@ namespace ElectronicInventoryManagementSystem.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_context.Warehouses.Any(e => e.Id == id)) return NotFound(new { message = "Kho không tồn tại." });
+                if (!_context.Warehouses.Any(e => e.Id == id))
+                    return NotFound(new { message = "Kho không tồn tại." });
                 throw;
             }
 
             return NoContent();
         }
 
-        // 5. NGHIỆP VỤ: Xóa kho an toàn (Cấm xóa nếu kho đang có linh kiện)
+        // 5. Xóa kho an toàn
+        [AdminOnly] // 👈 Gắn khóa vô nè
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWarehouse(int id)
         {
             var warehouse = await _context.Warehouses.FindAsync(id);
             if (warehouse == null) return NotFound(new { message = "Không tìm thấy kho để xóa." });
 
-            // Ràng buộc: Có linh kiện nào đang nằm trong kho này không?
             var hasProducts = await _context.Products.AnyAsync(p => p.WarehouseId == id);
             if (hasProducts)
             {
-                return BadRequest(new { message = "Cảnh báo: Không thể xóa! Kho này đang chứa linh kiện. Vui lòng xuất hết hàng hoặc chuyển sang kho khác trước khi xóa." });
+                return BadRequest(new
+                {
+                    message = "Cấm xóa! Kho này đang chứa linh kiện. Hãy chuyển hết hàng sang kho khác trước khi xóa."
+                });
             }
 
             _context.Warehouses.Remove(warehouse);

@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ElectronicInventoryManagementSystem.Data;
+﻿using ElectronicInventoryManagementSystem.Data;
+using ElectronicInventoryManagementSystem.Helpers;
 using ElectronicInventoryManagementSystem.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ElectronicInventoryManagementSystem.Controllers
 {
@@ -32,6 +33,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
         }
 
         // 3. Thêm mới danh mục
+        [AdminOnly]
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategory(Category category)
         {
@@ -41,6 +43,7 @@ namespace ElectronicInventoryManagementSystem.Controllers
         }
 
         // 4. Sửa danh mục (Mới thêm)
+        [AdminOnly]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategory(int id, Category category)
         {
@@ -61,7 +64,8 @@ namespace ElectronicInventoryManagementSystem.Controllers
             return NoContent();
         }
 
-        // 5. XÓA AN TOÀN (Nghiệp vụ quan trọng nhất)
+        // 5. XÓA AN TOÀN 
+        [AdminOnly]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {

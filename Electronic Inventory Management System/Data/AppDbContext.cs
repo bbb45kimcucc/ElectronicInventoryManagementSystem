@@ -19,9 +19,13 @@ namespace ElectronicInventoryManagementSystem.Data
         public DbSet<TicketDetail> TicketDetails { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<StockCard> StockCards { get; set; }
-        public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<InventoryLog> InventoryLogs { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<ActionRequest> ActionRequests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +40,19 @@ namespace ElectronicInventoryManagementSystem.Data
                 .HasOne(d => d.Product)
                 .WithMany()
                 .HasForeignKey(d => d.ProductId);
+
+            modelBuilder.Entity<User>().HasData(
+        new User
+        {
+            Id = 1,
+            Username = "admin_cuc",
+            Password = "112233",
+            FullName = "Admin Kim Cúc",
+            Email = "admin@gmail.com",
+            Role = "Admin"
         }
+    );
+        }
+
     }
 }

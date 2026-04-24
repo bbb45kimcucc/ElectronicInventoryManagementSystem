@@ -22,6 +22,63 @@ namespace Electronic_Inventory_Management_System.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.ActionRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ActionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TargetId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ActionRequests");
+                });
+
             modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -55,6 +112,10 @@ namespace Electronic_Inventory_Management_System.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentMethod")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -109,28 +170,6 @@ namespace Electronic_Inventory_Management_System.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("InventoryTickets");
-                });
-
-            modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.Manufacturer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Country")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Manufacturers");
                 });
 
             modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.Order", b =>
@@ -217,13 +256,13 @@ namespace Electronic_Inventory_Management_System.Migrations
                     b.Property<double>("AveragePrice")
                         .HasColumnType("float");
 
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CurrentStock")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ManufacturerId")
+                    b.Property<int?>("CurrentStock")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -231,7 +270,7 @@ namespace Electronic_Inventory_Management_System.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("Quantity")
+                    b.Property<int?>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<string>("SKU")
@@ -239,18 +278,19 @@ namespace Electronic_Inventory_Management_System.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Unit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("UnitId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("WarehouseId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BrandId");
+
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("ManufacturerId");
+                    b.HasIndex("UnitId");
 
                     b.HasIndex("WarehouseId");
 
@@ -381,6 +421,17 @@ namespace Electronic_Inventory_Management_System.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "admin@gmail.com",
+                            FullName = "Admin Kim Cúc",
+                            Password = "112233",
+                            Role = "Admin",
+                            Username = "admin_cuc"
+                        });
                 });
 
             modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.Warehouse", b =>
@@ -406,6 +457,78 @@ namespace Electronic_Inventory_Management_System.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Warehouses");
+                });
+
+            modelBuilder.Entity("InventoryLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Entity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("InventoryLogs");
+                });
+
+            modelBuilder.Entity("ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("Unit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Units");
                 });
 
             modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.InventoryTicket", b =>
@@ -469,21 +592,27 @@ namespace Electronic_Inventory_Management_System.Migrations
 
             modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.Product", b =>
                 {
+                    b.HasOne("Brand", "Brand")
+                        .WithMany("Products")
+                        .HasForeignKey("BrandId");
+
                     b.HasOne("ElectronicInventoryManagementSystem.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("ElectronicInventoryManagementSystem.Models.Manufacturer", "Manufacturer")
-                        .WithMany()
-                        .HasForeignKey("ManufacturerId");
+                    b.HasOne("Unit", "Unit")
+                        .WithMany("Products")
+                        .HasForeignKey("UnitId");
 
                     b.HasOne("ElectronicInventoryManagementSystem.Models.Warehouse", "Warehouse")
                         .WithMany()
                         .HasForeignKey("WarehouseId");
 
+                    b.Navigation("Brand");
+
                     b.Navigation("Category");
 
-                    b.Navigation("Manufacturer");
+                    b.Navigation("Unit");
 
                     b.Navigation("Warehouse");
                 });
@@ -518,6 +647,31 @@ namespace Electronic_Inventory_Management_System.Migrations
                     b.Navigation("Ticket");
                 });
 
+            modelBuilder.Entity("InventoryLog", b =>
+                {
+                    b.HasOne("ElectronicInventoryManagementSystem.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ProductImage", b =>
+                {
+                    b.HasOne("ElectronicInventoryManagementSystem.Models.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Brand", b =>
+                {
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.InventoryTicket", b =>
                 {
                     b.Navigation("TicketDetails");
@@ -526,6 +680,16 @@ namespace Electronic_Inventory_Management_System.Migrations
             modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("ElectronicInventoryManagementSystem.Models.Product", b =>
+                {
+                    b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("Unit", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
