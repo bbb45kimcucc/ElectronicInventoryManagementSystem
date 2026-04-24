@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ElectronicInventoryManagementSystem.Data;
-using Microsoft.AspNetCore.Authentication.Cookies; // Thêm dòng này
+using Microsoft.AspNetCore.Authentication.Cookies; 
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,9 +35,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // 3. CẤU HÌNH AUTHORIZATION (PHÂN QUYỀN - CHIA NHIỆM VỤ)
 builder.Services.AddAuthorization(options =>
 {
-    // Luật: Chỉ những người có Role là Admin mới được dùng policy này
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-    // Luật: Staff hoặc Admin đều được
     options.AddPolicy("StaffOrAdmin", policy => policy.RequireRole("Admin", "Staff"));
 });
 
@@ -57,7 +55,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins("http://localhost:3000", "https://eims-frontend-asp-net.vercel.app") // <--- THÊM LINK VERCEL VÀO ĐÂY
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
